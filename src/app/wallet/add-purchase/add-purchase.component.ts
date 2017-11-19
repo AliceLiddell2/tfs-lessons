@@ -16,8 +16,10 @@ export class AddPurchaseComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      title: ['', [Validators.required]],
-      price: [''],
+      title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
+      price: ['', [Validators.required, Validators.min(10), Validators.max(1000000)]],
+      date: [''],
+      comment: ['']
     });
   }
 
