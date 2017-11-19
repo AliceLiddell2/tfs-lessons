@@ -8,8 +8,38 @@ import {Purchase} from '../../model/purchase';
   styleUrls: ['./add-purchase.component.css']
 })
 export class AddPurchaseComponent implements OnInit {
+  errorMessages = {
+    title: {
+      required: 'поле обязательно для заполнения',
+      minLength: 'минимальная длина — 3',
+      maxLength: 'максимальная длина — 80'
+    },
+    price: {
+      required: 'поле обязательно для заполнения',
+      min: 'минимальное значение 10',
+      max: 'максимальное значение 1000000',
+      pattern: 'разрешены лишь цифры'
+    },
+    date: {
+      pattern: 'неверный формат даты'
+    }
+  };
+
   form: FormGroup;
   @Output() addPurchase = new EventEmitter<Purchase>();
+
+  errorMes(type) {
+    const fieldType = this.form.get(type);
+    let message = '';
+    const error = this.errorMessages[type];
+
+    for (const key in fieldType.errors) {
+      if (fieldType.errors.hasOwnProperty(key)) {
+        message += error[key] + ' ';
+      }
+    }
+    return message;
+  }
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -35,6 +65,10 @@ export class AddPurchaseComponent implements OnInit {
       price: price,
       date: new Date()
     };
+
+    if (this.form.value.comment) {
+      purchase.comment = this.form.value.comment;
+    }
 
     this.addPurchase.emit(purchase);
   }
