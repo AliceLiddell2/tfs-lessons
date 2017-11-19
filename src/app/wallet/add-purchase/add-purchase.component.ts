@@ -17,8 +17,8 @@ export class AddPurchaseComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
-      price: ['', [Validators.required, Validators.min(10), Validators.max(1000000)]],
-      date: [''],
+      price: ['', [Validators.required, Validators.pattern('[0-9]+?.[0-9]+'), Validators.min(10), Validators.max(1000000)]],
+      date: ['', [Validators.pattern('([0-2]?[0-9]|[3][0-1]).?([0][0-9]|[1][0-2]).[0-2]?[0-9][0-9][0-9]')]],
       comment: ['']
     });
   }
