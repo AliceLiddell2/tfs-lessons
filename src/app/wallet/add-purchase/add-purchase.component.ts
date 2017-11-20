@@ -8,6 +8,9 @@ import {Purchase} from '../../model/purchase';
   styleUrls: ['./add-purchase.component.css']
 })
 export class AddPurchaseComponent implements OnInit {
+  form: FormGroup;
+  @Output() addPurchase = new EventEmitter<Purchase>();
+
   errorMessages = {
     title: {
       required: 'поле обязательно для заполнения',
@@ -25,22 +28,6 @@ export class AddPurchaseComponent implements OnInit {
     }
   };
 
-  form: FormGroup;
-  @Output() addPurchase = new EventEmitter<Purchase>();
-
-  errorMes(type) {
-    const fieldType = this.form.get(type);
-    let message = '';
-    const error = this.errorMessages[type];
-
-    for (const key in fieldType.errors) {
-      if (fieldType.errors.hasOwnProperty(key)) {
-        message += error[key] + ' ';
-      }
-    }
-    return message;
-  }
-
   constructor(private formBuilder: FormBuilder) {
   }
 
@@ -51,6 +38,19 @@ export class AddPurchaseComponent implements OnInit {
       date: ['', [Validators.pattern('([0-2]?[0-9]|[3][0-1]).?([0][0-9]|[1][0-2]).[0-2]?[0-9][0-9][0-9]')]],
       comment: ['']
     });
+  }
+
+  errorMess(type) {
+    const fieldType = this.form.get(type);
+    let message = '';
+    const error = this.errorMessages[type];
+
+    for (const key in fieldType.errors) {
+      if (fieldType.errors.hasOwnProperty(key)) {
+        message += error[key] + ' ';
+      }
+    }
+    return message;
   }
 
   onSubmit() {
