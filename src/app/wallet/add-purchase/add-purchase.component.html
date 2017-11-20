@@ -1,6 +1,7 @@
 <form [formGroup]="form" (submit)="onSubmit()">
   <div class="form-group">
-    <input formControlName="title"
+    <input required
+           formControlName="title"
            type="text"
            class="form-control"
            automation-id="title-control"
