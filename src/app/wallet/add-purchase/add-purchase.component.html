@@ -1,26 +1,25 @@
 <form [formGroup]="form" (submit)="onSubmit()">
   <div class="form-group">
-    <input required
+    <input
            formControlName="title"
            type="text"
            class="form-control"
            automation-id="title-control"
-           placeholder="Название">
-    <div class="form-control"
-      automation-id="title-error">
-      {{errorMes('title')}}
+           placeholder="Название" required>
+    <div automation-id="title-error"
+         class="invalid-feedback">
+      {{errorMess('title')}}
     </div>
   </div>
   <div class="form-group">
-    <input required
-           formControlName="price"
+    <input required formControlName="price"
            type="text"
            class="form-control"
            automation-id="price-control"
            placeholder="Стоимость">
-    <div class="form-control"
-      automation-id="price-error">
-      {{errorMes('price')}}
+    <div automation-id="price-error"
+         class="invalid-feedback">
+      {{errorMess('price')}}
     </div>
   </div>
   <div class="form-group">
@@ -29,17 +28,17 @@
            class="form-control"
            automation-id="date-control"
            placeholder="Дата">
-    <div  class="invalid-feedback"
-      automation-id="date-error">
-      {{errorMes('date')}}
+    <div automation-id="date-error"
+         class="invalid-feedback">
+      {{errorMess('date')}}
     </div>
   </div>
   <div class="form-group">
     <textarea formControlName="comment"
-           type="text"
-           class="form-control"
-           automation-id="comment-control"
-           placeholder="Комментарий">
+              type="text"
+              class="form-control"
+              automation-id="comment-control"
+              placeholder="Комментарий">
     </textarea>
   </div>
   <div class="form-group">
