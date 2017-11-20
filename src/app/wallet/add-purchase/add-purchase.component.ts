@@ -14,8 +14,8 @@ export class AddPurchaseComponent implements OnInit {
   errorMessages = {
     title: {
       required: 'поле обязательно для заполнения',
-      minLength: 'минимальная длина — 3',
-      maxLength: 'максимальная длина — 80'
+      minlength: 'минимальная длина — 3',
+      maxlength: 'максимальная длина — 80'
     },
     price: {
       required: 'поле обязательно для заполнения',
@@ -35,8 +35,8 @@ export class AddPurchaseComponent implements OnInit {
     this.form = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
       price: ['', [Validators.required, Validators.pattern('[0-9]*.?[0-9]+'), Validators.min(10), Validators.max(1000000)]],
-      date: ['', [Validators.pattern('([0-2]?[0-9]|[3][0-1]).?([0][0-9]|[1][0-2]).[0-2]?[0-9][0-9][0-9]')]],
-      comment: ['']
+      comment: [''],
+      date: ['', [Validators.pattern('([0-2]?[0-9]|[3][0-1]).?([0][0-9]|[1][0-2]).[0-2]?[0-9][0-9][0-9]')]]
     });
   }
 
