@@ -62,7 +62,7 @@ export class AddPurchaseComponent implements OnInit {
 
     const purchase: Purchase = {
       title: this.form.value.title,
-      price: Math.round(price * 100) / 100,
+      price: Math.floor(price * 100) / 100,
       date: this.form.value.date === '' ? new Date() : new Date(this.form.value.date)
     };
 
