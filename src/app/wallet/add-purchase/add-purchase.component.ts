@@ -47,7 +47,7 @@ export class AddPurchaseComponent implements OnInit {
 
     for (const key in fieldType.errors) {
       if (fieldType.errors.hasOwnProperty(key)) {
-        message += error[key] + ' ';
+        message += error[key] + '';
       }
     }
     return message;
