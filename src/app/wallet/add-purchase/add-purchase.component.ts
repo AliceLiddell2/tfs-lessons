@@ -19,9 +19,9 @@ export class AddPurchaseComponent implements OnInit {
     },
     price: {
       required: 'поле обязательно для заполнения',
-      pattern: 'разрешены лишь цифры',
       min: 'минимальное значение 10',
-      max: 'максимальное значение 1000000'
+      max: 'максимальное значение 1000000',
+      pattern: 'разрешены лишь цифры'
     },
     date: {
       pattern: 'неверный формат даты'
