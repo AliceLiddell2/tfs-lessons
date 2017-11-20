@@ -55,7 +55,7 @@ export class AddPurchaseComponent implements OnInit {
 
   onSubmit() {
     const price = parseFloat(this.form.value.price);
-    
+
     if (this.form.invalid) {
       return;
     }
