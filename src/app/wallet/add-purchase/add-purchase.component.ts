@@ -35,7 +35,7 @@ export class AddPurchaseComponent implements OnInit {
 
     for (const key in fieldType.errors) {
       if (fieldType.errors.hasOwnProperty(key)) {
-        message = error[key] + ' ';
+        message += error[key] + ' ';
       }
     }
     return message;
@@ -55,15 +55,15 @@ export class AddPurchaseComponent implements OnInit {
 
   onSubmit() {
     const price = parseFloat(this.form.value.price);
-
-    if (isNaN(price)) {
+    
+    if (this.form.invalid) {
       return;
     }
 
     const purchase: Purchase = {
       title: this.form.value.title,
-      price: price,
-      date: new Date()
+      price: Math.round(price * 100) / 100,
+      date: this.form.value.date === '' ? new Date() : new Date(this.form.value.date)
     };
 
     if (this.form.value.comment) {
