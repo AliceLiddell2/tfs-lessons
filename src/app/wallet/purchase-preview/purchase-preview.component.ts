@@ -21,7 +21,7 @@ export class PurchasePreviewComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    
+
   }
 
   onClick() {
