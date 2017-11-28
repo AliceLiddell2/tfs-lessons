@@ -11,8 +11,23 @@ const digitRegex = /^\d*\.?\d+$/;
 })
 export class AddPurchaseComponent implements OnInit {
   form: FormGroup;
+  private newPurchase: Purchase;
   @Output() addPurchase = new EventEmitter<Purchase>();
-  @Input() purchase: Purchase;
+  @Input() set purchase(value: Purchase) {
+    const date = value.date
+      ? new Date(value.date)
+      : new Date();
+    this.form.setValue({
+      title: value.title,
+      price: value.price,
+      date: date.toISOString().substr(0, 10),
+      comment: value.comment
+    });
+    this.newPurchase = this.form.value;
+  }
+  get purchase(): Purchase {
+    return this.newPurchase;
+  }
 
   constructor(private formBuilder: FormBuilder) {
   }
