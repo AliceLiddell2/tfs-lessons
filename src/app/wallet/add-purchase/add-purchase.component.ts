@@ -14,9 +14,7 @@ export class AddPurchaseComponent implements OnInit {
   private newPurchase: Purchase;
   @Output() addPurchase = new EventEmitter<Purchase>();
   @Input() set purchase(value: Purchase) {
-    const date = value.date
-      ? new Date(value.date)
-      : new Date();
+    const date = value.date ? new Date(value.date) : new Date();
     this.form.setValue({
       title: value.title,
       price: value.price,
