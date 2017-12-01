@@ -33,13 +33,32 @@ export class PurchasePreviewComponent implements OnInit, OnChanges {
     this.previewClick.emit();
   }
 
+  onEditClick() {
+    this.isEdit = true;
+  }
+
   onDeleteClick(event: MouseEvent) {
     event.stopPropagation();
 
     this.previewDelete.emit();
   }
 
-  onEditPurchase() {
+  onEditPurchase(purchase: Purchase) {
+    if (this.purchase.id) {
+      purchase = Object.assign({...purchase} , {id: this.purchase.id});
+    }
+
+    this.edit.emit(purchase);
+  }
+
+  onCancelEdit() {
+    this.isEdit = false;
+    this.editForm.setValue({
+      title: this.purchase.title,
+      price: this.purchase.price,
+      date: '',
+      comment: this.purchase.comment ? this.purchase.comment : ''
+    });
   }
 
   toggleEdit() {
