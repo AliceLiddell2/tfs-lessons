@@ -51,7 +51,7 @@ export class PurchasePreviewComponent implements OnInit, OnChanges {
     this.edit.emit(purchase);
   }
 
-  onCancelEdit() {
+  toggleEdit() {
     this.isEdit = false;
     this.editForm.setValue({
       title: this.purchase.title,
@@ -59,8 +59,5 @@ export class PurchasePreviewComponent implements OnInit, OnChanges {
       date: '',
       comment: this.purchase.comment ? this.purchase.comment : ''
     });
-  }
-
-  toggleEdit() {
   }
 }
