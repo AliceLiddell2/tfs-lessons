@@ -1,4 +1,4 @@
-<div (click)="onClick()"
+<div *ngIf="!isEdit" (click)="onClick()"
      automation-id="header"
      class="d-flex justify-content-between align-items-center preview-title">
   {{purchase.title}}
@@ -16,7 +16,16 @@
       <td automation-id="comment">{{purchase.comment}}</td>
     </tr>
   </table>
-  <button class="btn btn-warning btn-block">Редактировать</button>
+  <button automation-id="begin-edit-btn" class="btn btn-warning btn-block" (click)="onEditClick()">Редактировать</button>
+  </div>
+<div automation-id="edit-purchase-form" class="preview-body" *ngIf="isEdit && isOpen" >
+  <div class="form-group">
+    <button type=button
+      automation-id="cancel-edit-btn"
+      class="btn btn-danger btn-block"
+      (click)="onCancelEdit()">Отмена
+    </button>
+  </div>
 </div>
 <!--<div class="preview-body">-->
 <!--<button class="btn btn-danger btn-block">Отмена</button>-->
