@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Purchase} from '../../model/purchase';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'tfs-purchase-preview',
@@ -14,10 +13,9 @@ export class PurchasePreviewComponent implements OnInit, OnChanges {
   @Output() previewDelete = new EventEmitter();
   @Output() edit = new EventEmitter<Purchase>();
 
-  editForm: FormGroup;
   isEdit = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor() {
   }
 
   ngOnInit() {
@@ -52,12 +50,6 @@ export class PurchasePreviewComponent implements OnInit, OnChanges {
   }
 
   toggleEdit() {
-    this.isEdit = false;
-    this.editForm.setValue({
-      title: this.purchase.title,
-      price: this.purchase.price,
-      date: '',
-      comment: this.purchase.comment ? this.purchase.comment : ''
-    });
+    this.isEdit = !this.isEdit;
   }
 }
