@@ -5,7 +5,7 @@
   <span class="badge badge-secondary" automation-id="price">{{purchase.price | currency:'RUB':''}}</span>
   <span class="badge badge-danger delete-btn" (click)="onDeleteClick($event)">&times;</span>
 </div>
-<div class="preview-body" *ngIf="isOpen" automation-id="preview-body">
+<div class="preview-body" *ngIf="isOpen && !isEdit" automation-id="preview-body">
   <table class="details">
     <tr>
       <th>Дата:</th>
