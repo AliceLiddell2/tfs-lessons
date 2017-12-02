@@ -23,9 +23,8 @@ export class PurchasePreviewComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  ngOnChanges({isOpen}: SimpleChanges): void {
-    this.isOpen = isOpen.currentValue;
-    if (!this.isOpen) {
+  ngOnChanges({isOpen}: SimpleChanges) {
+    if (isOpen) {
       this.isEdit = false;
     }
   }
