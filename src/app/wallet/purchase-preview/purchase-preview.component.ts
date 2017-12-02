@@ -13,8 +13,8 @@ export class PurchasePreviewComponent implements OnInit, OnChanges {
   @Output() previewClick = new EventEmitter();
   @Output() previewDelete = new EventEmitter();
   @Output() edit = new EventEmitter<Purchase>();
+
   isEdit = false;
-  editForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
   }
