@@ -1,2 +1,2 @@
-export const BASE_URL = 'https://console.firebase.google.com/project/tink-1-proj/database';
+export const BASE_URL = 'https://tink-1-proj.firebaseio.com/';
 // например, https://qwerty.firebaseio.com
